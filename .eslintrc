@@ -1,0 +1,60 @@
+{
+	"extends": "airbnb",
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true
+	},
+	"plugins": [
+		"react",
+		"jsx-a11y",
+		"import"
+	],
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"settings": {
+		"import/resolver": {
+			"babel-module": {}
+		}
+	},
+	"rules": {
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true,
+      "peerDependencies": true
+    }],
+    "quotes": ["error", "double", {
+      "avoidEscape": true
+    }],
+    "keyword-spacing": ["error", {
+      "overrides": {
+        "if": { "after": false },
+        "for": { "after": false },
+        "while": { "after": false },
+        "catch": { "after": false },
+        "switch": { "after": false }
+      }
+    }],
+    "generator-star-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
+    }],
+		"indent": ["error", 2, {
+			"SwitchCase": 1
+		}],
+		"func-names": "off",
+    "comma-dangle": ["error", "never"],
+    "array-bracket-spacing": ["error", "always"],
+    "arrow-body-style": "off",
+    "semi": ["error", "never"],
+    "global-require": "warn",
+    "class-methods-use-this": "off",
+    "react/forbid-prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-closing-bracket-location": ["error", "after-props"]
+	}
+}
