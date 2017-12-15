@@ -5,6 +5,16 @@
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "repository": "gabiseabra/react-prismic",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn run clean && yarn run build",
+    "lint": "eslint src",
+    "build": "babel src -d lib",
+    "clean": "rimraf ./lib"
+  },
+  "dependencies": {
+    "fbjs": "^0.8.16",
+    "prop-types": "^15.6.0"
+  },
   "peerDependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -25,14 +35,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-transition-group": "^2.2.1",
+    "rimraf": "^2.6.2",
     "styled-components": "^2.2.4"
-  },
-  "dependencies": {
-    "fbjs": "^0.8.16",
-    "prop-types": "^15.6.0"
-  },
-  "scripts": {
-    "build": "babel src -d lib",
-    "lint": "eslint src"
   }
 }
