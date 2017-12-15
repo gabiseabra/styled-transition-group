@@ -11,9 +11,6 @@
     "styled-components": "^2.2.4"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.2.17",
-    "@storybook/addon-links": "^3.2.17",
-    "@storybook/react": "^3.2.17",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-preset-env": "^1.6.1",
@@ -34,7 +31,5 @@
     "prop-types": "^15.6.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
   }
 }
