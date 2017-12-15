@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+# IDE
+.vscode
+
+# Logs
+*.log
+tmp
