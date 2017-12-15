@@ -11,7 +11,7 @@ const flatten = (_, context) => {
     (obj, key) => ({ [hyphenate(key)]: key, ...obj }),
     {}
   )
-  const pattern = new RegExp(`([^\\s]+|^):(${Object.keys(states).join("|")})`, "g")
+  const pattern = new RegExp(`([^\\s]+|^):(${Object.keys(states).join("|")}(?=\\s*[{,]))`, "g")
   const chunks = _.map((body) => {
     if(typeof body !== "string") return body
     return body.replace(pattern, (__, target, state) => {
