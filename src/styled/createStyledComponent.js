@@ -7,16 +7,16 @@ const createStyledComponent = StyledComponent(ComponentStyle, construct)
 export default (...args) => {
   const Component = createStyledComponent(...args)
   const { componentId } = Component.componentStyle
-  const attrs = Component.attrs || {}
-  attrs.classNames = {
+  Component.attrs = Component.attrs || {}
+  const transitions = Object.assign({
     appear: `${componentId}-appear`,
     appearActive: `${componentId}-appear-active`,
     enter: `${componentId}-enter`,
     enterActive: `${componentId}-enter-active`,
     exit: `${componentId}-exit`,
-    exitActive: `${componentId}-exit-active`,
-    ...(attrs.classNames || {})
-  }
-  Component.attrs = attrs
+    exitActive: `${componentId}-exit-active`
+  }, Component.attrs.classNames || {})
+  Component.attrs.classNames = transitions
+  Component.classNames = transitions
   return Component
 }
