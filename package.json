@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "lib/index.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
-  "repository": "gabiseabra/react-prismic",
+  "repository": "gabiseabra/styled-transition-group",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "yarn run clean && yarn run build",
