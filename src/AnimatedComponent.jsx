@@ -6,16 +6,17 @@ const transitionPropTypes = { ...CSSTransition.propTypes }
 delete transitionPropTypes.children
 
 const groupProps = (props) => {
-  const groups = [ [], [] ]
-  Object.entries(props).forEach(([ val, key ]) => {
+  const groups = [ {}, {} ]
+  Object.entries(props).forEach(([ key, val ]) => {
     if((key in transitionPropTypes)) {
-      groups[0].push(val)
+      groups[0][key] = val
     } else {
-      groups[1].push(val)
+      groups[1][key] = val
     }
   })
   return groups
 }
+
 const AnimatedComponent = ({ tag: Tag, ...props }) => {
   const [ transition, rest ] = groupProps(props)
   return (
