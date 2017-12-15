@@ -22,6 +22,8 @@ The `transition` object has the same interface as styled-component's `styled` ob
 
 To style a transition state use an `&:{state}` selector. See [react-transition-group's docs](https://reactcommunity.org/react-transition-group/#CSSTransition-prop-classNames) for available transition states (State names are hyphenated).
 
+[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
+
 ```jsx
 import transition from "styled-transition-group"
 
@@ -48,6 +50,8 @@ render(
 ### Attach transition props
 
 Styled component's `attr()` method can be used to attach transition props to a component. Other props are passed to the child component.
+
+[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -76,7 +80,10 @@ render(
 ```
 
 ### Transition Group
+
 Styled transitions can be used inside a `TransitionGroup` as normal.
+
+[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
 
 ```jsx
 import { TransitionGroup } from "react-transition-group"
