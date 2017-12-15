@@ -1,9 +1,6 @@
 # Dependencies
 node_modules
 
-# Configuration
-.env
-
 # IDE
 .vscode
 
@@ -12,5 +9,4 @@ node_modules
 tmp
 
 # Build
-dist
-public/main.js
+lib
