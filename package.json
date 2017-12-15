@@ -1,7 +1,7 @@
 {
   "name": "styled-components-transition",
   "version": "0.0.0",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
@@ -31,5 +31,7 @@
     "prop-types": "^15.6.0"
   },
   "scripts": {
+    "build": "babel src -d lib",
+    "lint": "eslint src"
   }
 }
