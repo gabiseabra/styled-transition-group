@@ -51,7 +51,7 @@ render(
 
 Styled component's `attr()` method can be used to attach transition props to a component. Other props are passed to the child component.
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
+[Live example on CodeSandbox](https://stackblitz.com/edit/02-styled-transition-group?file=index.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -83,7 +83,7 @@ render(
 
 Styled transitions can be used inside a `TransitionGroup` as normal.
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
+[Live example on CodeSandbox](https://stackblitz.com/edit/03-styled-transition-group?file=index.js)
 
 ```jsx
 import { TransitionGroup } from "react-transition-group"
