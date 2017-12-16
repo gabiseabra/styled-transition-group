@@ -22,7 +22,7 @@ The `transition` object has the same interface as styled-component's `styled` ob
 
 To style a transition state use an `&:{state}` selector. See [react-transition-group's docs](https://reactcommunity.org/react-transition-group/#CSSTransition-prop-classNames) for available transition states (State names are hyphenated).
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=index.js)
+[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=Fade.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -39,19 +39,13 @@ const Fade = transition.div`
     transition: opacity 800ms ease-in;
   }
 `
-
-render(
-  <Fade in={"true"} timeout={1000}>
-    Hello World
-  </Fade>
-)
 ```
 
 ### Attach transition props
 
-Styled component's `attr()` method can be used to attach transition props to a component. Other props are passed to the child component.
+Styled component's `attr()` method can be used to attach transition props to a component. Props unrelated to CSSTransition are passed to the child component.
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/02-styled-transition-group?file=index.js)
+[Live example on CodeSandbox](https://stackblitz.com/edit/02-styled-transition-group?file=Fade.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -71,35 +65,10 @@ const Fade = transition.div.attrs({
     transition: opacity 800ms ease-in;
   }
 `
-
-render(
-  <Fade in={"true"} id="foo">
-    Hello World
-  </Fade>
-)
 ```
 
 ### Transition Group
 
-Styled transitions can be used inside a `TransitionGroup` as normal.
+Styled transitions can be used with `TransitionGroup`
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/03-styled-transition-group?file=index.js)
-
-```jsx
-import { TransitionGroup } from "react-transition-group"
-import transition from "styled-transition-group"
-
-const Animation = transition.div` /* ... */ `
-
-render(
-  <TransitionGroup>
-    <Animation key="hello" in={"true"} id="foo">
-      Hello
-    </Animation>
-    <Animation key="world" in={"true"} id="foo">
-      World
-    </Animation>
-    {/* ... */}
-  </TransitionGroup>
-)
-```
+[Live example on CodeSandbox](https://stackblitz.com/edit/03-styled-transition-group?file=Fade.js)
