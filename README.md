@@ -10,7 +10,7 @@ Add `styled-transition-group` and it's peer dependencies to your package:
 
 ```shell
 yarn add styled-components react-transition-group
-yarn add styled-transition-groups
+yarn add styled-transition-group
 ```
 
 Usage
