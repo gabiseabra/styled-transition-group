@@ -7,7 +7,7 @@ import transition from "../src"
 const Tag = () => <div>Test</div>
 
 describe("transition", () => {
-  it("wraps tag in AnimatedComponent", () => {
+  it("wraps tag in CSSTransition", () => {
     const Component = transition(Tag)``
     const context = mount(<Component timeout={100} />)
     const cssTransition = context.find(CSSTransition)
@@ -40,5 +40,14 @@ describe("transition", () => {
     const context = mount(<Component timeout={100} foo bar />)
     context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "foo", "bar")
     context.find("div").props().should.not.include.keys("foo", "bar")
+  })
+
+  it("can be extended", () => {
+    const Component = transition.div`foo`
+    const Wrapper = Component.extend`bar`
+    const context = mount(<Wrapper timeout={100} />)
+    context.find(CSSTransition).should.have.length(1)
+    context.find("div").should.have.length(1)
+    Wrapper.target.componentStyle.rules.should.include("foo", "bar")
   })
 })
