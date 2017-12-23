@@ -6,7 +6,7 @@ import generateAlphabeticName from "styled-components/lib/utils/generateAlphabet
 import createComponentStyle from "styled-components/lib/models/ComponentStyle"
 
 const flatten = (_, context) => {
-  const { classNames } = context
+  const { transition: { classNames } } = context
   const states = Object.keys(classNames).reduce(
     (obj, key) => ({ [hyphenate(key)]: key, ...obj }),
     {}

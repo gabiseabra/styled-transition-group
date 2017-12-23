@@ -2,7 +2,6 @@
 import React from "react"
 import { mount } from "enzyme"
 import { CSSTransition } from "react-transition-group"
-import AnimatedComponent from "../src/AnimatedComponent"
 import transition from "../src"
 
 const Tag = () => <div>Test</div>
@@ -11,19 +10,35 @@ describe("transition", () => {
   it("wraps tag in AnimatedComponent", () => {
     const Component = transition(Tag)``
     const context = mount(<Component timeout={100} />)
-    const parent = context.find(AnimatedComponent)
-    const cssTransition = parent.find(CSSTransition)
+    const cssTransition = context.find(CSSTransition)
     const component = cssTransition.find(Tag)
-    parent.should.have.length(1)
     cssTransition.should.have.length(1)
     component.should.have.length(1)
   })
+
   it("passes props to child component", () => {
     const Component = transition(Tag)``
     const context = mount(<Component timeout={100} foo bar />)
-    context.find(CSSTransition).props().should.have.keys("timeout", "classNames", "children")
-    context.find(Tag).props().should.have.keys("foo", "bar", "className")
+    context.find(CSSTransition).props().should.include.keys("timeout", "classNames")
+    context.find(Tag).props().should.include.keys("foo", "bar", "className")
   })
-  it("passes innerRef to child component")
-  it("omits invalid html props from tags")
+
+  it("passes innerRef to child component", () => {
+    const Component = transition.div``
+    class Wrapper extends React.Component {
+      render() {
+        return <Component timeout={100} innerRef={(node) => { this.innerRef = node }} />
+      }
+    }
+    const context = mount(<Wrapper />)
+    const ref = context.find(Wrapper).instance().innerRef
+    ref.should.equal(context.find("div").getDOMNode())
+  })
+
+  it("omits invalid html props from tags", () => {
+    const Component = transition.div``
+    const context = mount(<Component timeout={100} foo bar />)
+    context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "foo", "bar")
+    context.find("div").props().should.not.include.keys("foo", "bar")
+  })
 })
