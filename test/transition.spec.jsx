@@ -50,4 +50,16 @@ describe("transition", () => {
     context.find("div").should.have.length(1)
     Wrapper.target.componentStyle.rules.should.include("foo", "bar")
   })
+
+  it("omits transition attrs", () => {
+    const Component = transition(Tag).attrs({
+      unmountOnExit: true,
+      timeout: 100,
+      onExit: () => "..."
+    })``
+    const context = mount(<Component in />)
+
+    context.find(CSSTransition).props().should.include.keys("timeout", "unmountOnExit", "onExit")
+    context.find(Tag).props().should.not.include.keys("unmountOnExit", "onExit")
+  })
 })

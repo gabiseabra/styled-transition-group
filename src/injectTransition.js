@@ -1,7 +1,7 @@
 import animated from "./AnimatedComponent"
 
-export default fun => (...args) => {
-  const Component = fun(...args)
+export default fun => (target, options, rules) => {
+  const Component = fun(target, options, rules)
   const { componentId } = Component.componentStyle
   Component.classNames = {
     appear: `${componentId}-appear`,
@@ -11,6 +11,7 @@ export default fun => (...args) => {
     exit: `${componentId}-exit`,
     exitActive: `${componentId}-exit-active`
   }
+  Component.transition = options.transition
   Component.componentStyle.isStatic = false
   return animated(Component)
 }
