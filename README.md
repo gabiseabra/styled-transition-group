@@ -22,7 +22,7 @@ The `transition` object has the same interface as styled-component's `styled` ob
 
 To style a transition state use an `&:{state}` selector. See [react-transition-group's docs](https://reactcommunity.org/react-transition-group/#CSSTransition-prop-classNames) for available transition states (State names are hyphenated).
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/01-styled-transition-group?file=Fade.js)
+[Live example on Stackblitz](https://stackblitz.com/edit/01-styled-transition-group?file=Fade.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -45,7 +45,7 @@ const Fade = transition.div`
 
 Styled component's `attr()` method can be used to attach transition props to a component. Props unrelated to CSSTransition are passed to the child component.
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/02-styled-transition-group?file=Fade.js)
+[Live example on Stackblitz](https://stackblitz.com/edit/02-styled-transition-group?file=Fade.js)
 
 ```jsx
 import transition from "styled-transition-group"
@@ -71,4 +71,4 @@ const Fade = transition.div.attrs({
 
 Styled transitions can be used with `TransitionGroup`
 
-[Live example on CodeSandbox](https://stackblitz.com/edit/03-styled-transition-group?file=Fade.js)
+[Live example on Stackblitz](https://stackblitz.com/edit/03-styled-transition-group?file=Fade.js)
