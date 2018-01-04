@@ -10,7 +10,9 @@ const animated = Target => (
 
     static styledComponentId = Target.styledComponentId
 
-    static withComponent = Target.withComponent
+    static withComponent(...props) {
+      return animated(Target.withComponent(...props))
+    }
 
     static get extend() { return Target.extend }
 
