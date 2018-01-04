@@ -1,7 +1,7 @@
 {
   "name": "styled-transition-group",
   "description": "Write react-transition-group animations with styled-components",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "lib/index.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "repository": "gabiseabra/styled-transition-group",
