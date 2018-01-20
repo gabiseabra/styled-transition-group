@@ -21,7 +21,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-transition-group": "^2.2.1",
-    "styled-components": "^2.2.4"
+    "styled-components": ">=2.0 <2.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -45,6 +45,6 @@
     "react-dom": "^16.2.0",
     "react-transition-group": "^2.2.1",
     "rimraf": "^2.6.2",
-    "styled-components": "^2.2.4"
+    "styled-components": "^2.3.3"
   }
 }
