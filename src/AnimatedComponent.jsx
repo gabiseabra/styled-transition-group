@@ -36,6 +36,7 @@ const animated = Target => (
       return (
         <CSSTransition
           {...transition}
+          {...props}
           {...(Target.attrs || {})}
           classNames={this.classNames}>
           <Target ref={(node) => { this.target = node }} {...props} />

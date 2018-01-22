@@ -1,5 +1,6 @@
 const transitionProps = [
   "in",
+  // "timeout",
   "mountOnEnter",
   "unmountOnExit",
   "onEnter",
