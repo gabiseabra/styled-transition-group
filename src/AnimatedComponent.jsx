@@ -21,7 +21,14 @@ const animated = Target => (
       return construct(animated, Target)
     }
 
-    get classNames() { return classNames(this.constructor.styledComponentId) }
+    get classNames() {
+      const id = (
+        this.target ?
+          this.target.state.generatedClassName :
+          this.constructor.styledComponentId
+      )
+      return classNames(id)
+    }
 
     render() {
       const [ transition, props ] = groupProps(this.props)
@@ -31,7 +38,7 @@ const animated = Target => (
           {...transition}
           {...(Target.attrs || {})}
           classNames={this.classNames}>
-          <Target {...props} />
+          <Target ref={(node) => { this.target = node }} {...props} />
         </CSSTransition>
       )
     }
