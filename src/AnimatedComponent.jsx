@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CSSTransition from "react-transition-group/CSSTransition"
 import { groupProps } from "./transitionProps"
+import { classNames } from "./states"
 import construct from "./construct"
 
 const animated = Target => (
@@ -9,7 +10,7 @@ const animated = Target => (
 
     static displayName = `Animated(${Target.displayName})`
 
-    static componentId = Target.componentId
+    static styledComponentId = Target.styledComponentId
 
     static withComponent(...props) {
       return animated(Target.withComponent(...props))
@@ -20,17 +21,17 @@ const animated = Target => (
       return construct(animated, Target)
     }
 
+    get classNames() { return classNames(this.constructor.styledComponentId) }
+
     render() {
-      const { classNames } = Target
       const [ transition, props ] = groupProps(this.props)
 
       return (
         <CSSTransition
-          {...this.props}
-          {...(Target.transition || {})}
+          {...transition}
           {...(Target.attrs || {})}
-          classNames={classNames}>
-          <Target {...props} transition={{ classNames, ...transition }} />
+          classNames={this.classNames}>
+          <Target {...props} />
         </CSSTransition>
       )
     }
