@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import CSSTransition from "react-transition-group/CSSTransition"
 import { groupProps } from "./transitionProps"
 import { classNames } from "./states"
-import construct from "./construct"
+import { extend } from "./construct"
 
 const animated = Target => (
   class extends Component {
@@ -16,10 +16,7 @@ const animated = Target => (
       return animated(Target.withComponent(...props))
     }
 
-    /* TODO */
-    static get extend() {
-      return construct(animated, Target)
-    }
+    static get extend() { return extend(animated, Target.extend) }
 
     get classNames() {
       const id = (
