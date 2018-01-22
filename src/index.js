@@ -1,7 +1,8 @@
 import styled from "styled-components/lib/constructors/styled"
-import { createStyledComponent, construct } from "./styled"
+import animated from "./AnimatedComponent"
+import construct from "./construct"
 
 export default styled(
-  createStyledComponent,
+  animated,
   construct
 )
