@@ -60,6 +60,6 @@ describe("transition", () => {
     const context = mount(<Component in />)
 
     context.find(CSSTransition).props().should.include.keys("timeout", "unmountOnExit", "onExit")
-    context.find(Tag).props().should.not.include.keys("in")
+    context.find(Tag).props().should.not.include.keys("in", "unmountOnExit", "onExit")
   })
 })

@@ -1,5 +1,6 @@
 const transitionProps = [
   "in",
+  // Pass timeout through to use in css templates
   // "timeout",
   "mountOnEnter",
   "unmountOnExit",
@@ -15,15 +16,13 @@ const transitionProps = [
   "onAppear"
 ]
 
-export default transitionProps
-
-export const groupProps = (props) => {
-  const groups = [ {}, {} ]
+export default function partition(props) {
+  const groups = { transition: {}, props: {} }
   Object.entries(props).forEach(([ key, value ]) => {
     if(transitionProps.includes(key)) {
-      groups[0][key] = value
+      groups.transition[key] = value
     } else {
-      groups[1][key] = value
+      groups.props[key] = value
     }
   })
   return groups

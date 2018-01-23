@@ -1,16 +1,18 @@
 import React, { Component } from "react"
 import CSSTransition from "react-transition-group/CSSTransition"
-import { groupProps } from "./transitionProps"
-import { classNames } from "./states"
-import { extend } from "./construct"
+import { classNames } from "../states"
+import { extend } from "../construct"
+import groupProps from "./props"
 
-const animated = Target => (
+const animated = ({ attrs }) => Target => (
   class extends Component {
     static Target = Target
 
     static displayName = `Animated(${Target.displayName})`
 
     static styledComponentId = Target.styledComponentId
+
+    static attrs = attrs
 
     static withComponent(...props) {
       return animated(Target.withComponent(...props))
@@ -28,12 +30,13 @@ const animated = Target => (
     }
 
     render() {
-      const [ transition, props ] = groupProps(this.props)
+      const { transition, props } = groupProps(this.props)
 
       return (
         <CSSTransition
           {...transition}
           {...props}
+          {...(this.constructor.attrs || {})}
           {...(Target.attrs || {})}
           classNames={this.classNames}>
           <Target ref={(node) => { this.target = node }} {...props} />

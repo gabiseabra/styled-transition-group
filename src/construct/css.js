@@ -1,8 +1,8 @@
-import STATES from "./states"
+import STATES from "../states"
 
 const pseudoElements = Object.values(STATES)
 
-const pattern = new RegExp(`([^\\s;}]+|^):(${pseudoElements.join("|")}(?=\\s*[{,]))`, "g")
+const pattern = new RegExp(`([^\\s;}]+|^):(${pseudoElements.join("|")})(?=\\s*[{,])`, "g")
 
 export default function parseCss(strings, ...interpolations) {
   const result = strings.map(body => body.replace(pattern, (_, target, state) => {
