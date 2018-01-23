@@ -43,3 +43,7 @@ const animated = ({ attrs }) => Target => (
 )
 
 export default animated
+
+export const isAnimatedComponent = Klass => (
+  "styledComponentId" in Klass && "classNames" in Klass
+)
