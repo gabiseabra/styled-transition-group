@@ -4,8 +4,9 @@ import { classNames } from "../states"
 import { extend } from "../construct"
 import groupProps from "./props"
 
-const animated = ({ attrs }) => Target => (
-  class extends Component {
+const animated = options => function animatedWithOptions(Target) {
+  const { attrs } = options
+  return class extends Component {
     static Target = Target
 
     static displayName = `Animated(${Target.displayName})`
@@ -17,10 +18,10 @@ const animated = ({ attrs }) => Target => (
     static get classNames() { return classNames(this.styledComponentId) }
 
     static withComponent(...props) {
-      return animated(Target.withComponent(...props))
+      return animatedWithOptions(Target.withComponent(...props))
     }
 
-    static get extend() { return extend(animated, Target.extend) }
+    static get extend() { return extend(animatedWithOptions, Target.extend) }
 
     render() {
       const { transition, props } = groupProps(this.props)
@@ -40,7 +41,7 @@ const animated = ({ attrs }) => Target => (
       )
     }
   }
-)
+}
 
 export default animated
 
