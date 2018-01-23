@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 import React from "react"
 import { mount } from "enzyme"
+import { css } from "styled-components"
 import { CSSTransition } from "react-transition-group"
 import transition from "../src"
 
@@ -61,5 +62,13 @@ describe("transition", () => {
 
     context.find(CSSTransition).props().should.include.keys("timeout", "unmountOnExit", "onExit")
     context.find(Tag).props().should.not.include.keys("in", "unmountOnExit", "onExit")
+  })
+
+  it("works with css()", () => {
+    const Component = transition.div(css`foo: bar`)
+    const context = mount(<Component timeout={100} />)
+    context.find(CSSTransition).should.have.length(1)
+    context.find("div").should.have.length(1)
+    Component.Target.componentStyle.rules.should.include("foo: bar")
   })
 })
