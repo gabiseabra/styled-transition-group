@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import groupProps from "../AnimatedComponent/props"
-import parse from "./css"
+import css from "./css"
 
 const CONSTRUCTOR_METHODS = [ "withConfig", "attrs" ]
 
-const delegate = animated => fun => (...css) => animated(fun(...parse(...css)))
+const delegate = animated => fun => (...props) => animated(fun`${css(...props)}`)
 
 export const extend = (animated, target, config = {}) => {
   const delegateThis = delegate(animated(config))
