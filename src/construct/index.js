@@ -25,7 +25,7 @@ export default (animated, Tag, config) => {
       styledConfig.attrs = props.props
       transitionConfig.attrs = props.transition
     }
-    target = target.withConfig(config)
+    target = target.withConfig(styledConfig)
   }
   return extend(animated(transitionConfig), target)
 }
