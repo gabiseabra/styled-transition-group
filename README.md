@@ -74,3 +74,28 @@ const Fade = transition.div.attrs({
 Styled transitions can be used with `TransitionGroup`
 
 [Live example on Stackblitz](https://stackblitz.com/edit/03-styled-transition-group?file=Fade.js)
+
+### Selectors
+
+Using `styled-transition-group`'s css helper, selectors can target the transition it's included in (`&`) or other transition components. It replaces the selectors with the actual `styled-transition-group` component's class names.
+
+_Warning:_ Nesting doesn't work here. `&` targets the top level component regardless of nesting.
+
+```jsx
+import styled from "styled-components"
+import transition, { css } from "styled-transition-group"
+
+const Fade = transition.div` /* ... */ `
+
+const style = css`
+  ${Fade}:enter & { color: green }
+  ${Fade}:exit & { color: red }
+`
+
+const Button = styled.div`
+  ${style}
+  /* ... */
+`
+```
+
+[Live example on Stackblitz](https://stackblitz.com/edit/04-styled-transition-group?file=Text.js)
