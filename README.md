@@ -45,7 +45,7 @@ const Fade = transition.div`
 
 ### Attach transition props
 
-Styled component's `attr()` method can be used to attach transition props to a component. Props unrelated to CSSTransition are passed to the child component.
+Styled component's `attrs()` method can be used to attach transition props to a component. Props unrelated to CSSTransition are passed to the child component.
 
 [Live example on Stackblitz](https://stackblitz.com/edit/02-styled-transition-group?file=Fade.js)
 
