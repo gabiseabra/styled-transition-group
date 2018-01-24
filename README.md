@@ -1,6 +1,8 @@
 Styled Transition Group
 ===
 
+[![npm version](https://badge.fury.io/js/styled-transition-group.svg)](https://badge.fury.io/js/styled-transition-group)
+
 Inspired by issue [#1036](https://github.com/styled-components/styled-components/issues/1036) of styled-components, this package exports a `styled` object for generating animations with react-transition-group's `CSSTransition`.
 
 Getting Started
