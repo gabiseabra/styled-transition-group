@@ -3,7 +3,7 @@ import React from "react"
 import { mount } from "enzyme"
 import { css } from "styled-components"
 import { CSSTransition } from "react-transition-group"
-import transition from "../src"
+import transition from "../dist/bundle"
 
 const Tag = () => <div>Test</div>
 
