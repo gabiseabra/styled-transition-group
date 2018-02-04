@@ -23,6 +23,24 @@ const animated = options => function animatedWithOptions(Target) {
 
     static get extend() { return extend(animatedWithOptions, Target.extend) }
 
+    renderTarget(props) {
+      return (
+        <Target
+          transitionClassNames={this.constructor.classNames}
+          {...props} />
+      )
+    }
+
+    renderChildren({ children, ...props }) {
+      if(typeof children === "function") {
+        return state => this.renderTarget({
+          ...props,
+          children: children(state)
+        })
+      }
+      return this.renderTarget({ children, ...props })
+    }
+
     render() {
       const { transition, props } = groupProps(this.props)
       const transitionClassNames = this.constructor.classNames
@@ -34,9 +52,7 @@ const animated = options => function animatedWithOptions(Target) {
           {...(this.constructor.attrs || {})}
           {...(Target.attrs || {})}
           classNames={transitionClassNames}>
-          <Target
-            transitionClassNames={transitionClassNames}
-            {...props} />
+          {this.renderChildren({ ...props, transitionClassNames })}
         </CSSTransition>
       )
     }

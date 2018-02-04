@@ -71,4 +71,18 @@ describe("transition", () => {
     context.find("div").should.have.length(1)
     Component.Target.componentStyle.rules.should.include("foo: bar")
   })
+
+  it("renders children callback", () => {
+    const Component = transition.div``
+    const context = mount(
+      <Component timeout={100}>
+        {state => <span>{state}</span>}
+      </Component>
+    )
+    context.find(CSSTransition).should.have.length(1)
+    context.setProps({ in: true })
+    context.find("div").text().should.equal("entering")
+    context.setProps({ in: false })
+    context.find("div").text().should.equal("exiting")
+  })
 })
