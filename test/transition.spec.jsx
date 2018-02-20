@@ -36,11 +36,21 @@ describe("transition", () => {
     ref.should.equal(context.find("div").getDOMNode())
   })
 
-  it("omits invalid html props from tags", () => {
+  it("omits transition props from children", () => {
     const Component = transition.div``
-    const context = mount(<Component timeout={100} foo bar />)
-    context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "foo", "bar")
-    context.find("div").props().should.not.include.keys("foo", "bar")
+    const context = mount(<Component in unmountOnExit timeout={100} />)
+    context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "unmountOnExit")
+    context.find("div").props().should.not.include.keys("unmountOnExit")
+  })
+
+  it("omits attrs transition props", () => {
+    const Component = transition.div.attrs({
+      unmountOnExit: true,
+      timeout: 100
+    })``
+    const context = mount(<Component in />)
+    context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "unmountOnExit")
+    context.find("div").props().should.not.include.keys("unmountOnExit")
   })
 
   it("can be extended", () => {
