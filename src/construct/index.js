@@ -14,11 +14,15 @@ const groupConfig = (config) => {
   return groups
 }
 
-export const extend = (animated, target) => {
-  const delegateThis = cfg => delegate(animated(cfg))
+export const extend = (animated, target, config = {}) => {
+  const { transition, styled: styledConfig } = groupConfig(config)
+  const delegateThis = cfg => delegate(animated({ ...transition, ...cfg }))
+  if(Object.keys(styledConfig).length > 0) {
+    return extend(animated, target.withConfig(styledConfig), transition)
+  }
   const result = delegateThis({})(target)
-  result.withConfig = (config) => {
-    const cfg = groupConfig(config)
+  result.withConfig = (options) => {
+    const cfg = groupConfig(options)
     return delegateThis(cfg.transition)(target.withConfig(cfg.styled))
   }
   result.attrs = (attrs) => {
@@ -28,8 +32,4 @@ export const extend = (animated, target) => {
   return result
 }
 
-export default (animated, Tag, config) => {
-  let target = styled(Tag)
-  if(config) target = target.withConfig(config)
-  return extend(animated, target)
-}
+export default (animated, Tag, config) => extend(animated, styled(Tag), config)
