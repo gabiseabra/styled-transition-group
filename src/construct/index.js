@@ -1,15 +1,16 @@
+import isEmpty from "lodash.isempty"
 import styled from "styled-components"
 import groupProps from "../AnimatedComponent/props"
 import css from "./css"
 
 const delegate = animated => fun => (...props) => animated(fun`${css(...props)}`)
 
-const groupConfig = (config) => {
+const groupConfig = ({ attrs, ...config }) => {
   const groups = { transition: {}, styled: { ...config } }
-  if(config.attrs) {
-    const { transition, props } = groupProps(config.attrs)
+  if(attrs) {
+    const { transition, props } = groupProps(attrs)
     groups.transition.attrs = transition
-    groups.styled.attrs = props
+    if(!isEmpty(props)) groups.styled.attrs = props
   }
   return groups
 }
@@ -17,7 +18,7 @@ const groupConfig = (config) => {
 export const extend = (animated, target, config = {}) => {
   const { transition, styled: styledConfig } = groupConfig(config)
   const delegateThis = cfg => delegate(animated({ ...transition, ...cfg }))
-  if(Object.keys(styledConfig).length > 0) {
+  if(!isEmpty(styledConfig)) {
     return extend(animated, target.withConfig(styledConfig), transition)
   }
   const result = delegateThis({})(target)
