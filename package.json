@@ -17,7 +17,6 @@
     "fbjs": "^0.8.16",
     "lodash.invert": "^4.3.0",
     "lodash.isempty": "^4.4.0",
-    "lodash.mapvalues": "^4.6.0",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
