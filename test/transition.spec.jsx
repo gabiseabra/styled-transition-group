@@ -10,7 +10,6 @@ const Tag = () => <div>Test</div>
 describe("transition", () => {
   it("wraps tag in CSSTransition", () => {
     const Component = transition(Tag)``
-    console.log(Component);
     const context = mount(<Component timeout={100} />)
     const cssTransition = context.find(CSSTransition)
     const component = cssTransition.find(Tag)
