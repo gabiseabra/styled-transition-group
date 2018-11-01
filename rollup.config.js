@@ -4,7 +4,7 @@ import babel from "rollup-plugin-babel"
 import resolve from "rollup-plugin-node-resolve"
 import pkg from "./package.json"
 
-const include = [ "src/**", "node_modules/styled-components/src/**" ]
+const include = [ "src/**" ]
 
 const deps = Object.keys(pkg.dependencies).concat(Object.keys(pkg.peerDependencies))
 
@@ -16,7 +16,7 @@ export default {
     { file: "dist/bundle.js", format: "cjs" },
     { file: "dist/bundle.es.js", format: "es" }
   ],
-  external: name => (!/styled-components\/src/.test(name) && EXTERNALS.test(name)),
+  external: name => EXTERNALS.test(name),
   plugins: [
     resolve({ extensions: [ ".js", ".jsx" ] }),
     flow({ pretty: true }),

@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import CSSTransition from "react-transition-group/CSSTransition"
 import { classNames } from "../states"
-import { extend } from "../construct"
 import groupProps from "./props"
 
 const animated = options =>
@@ -22,10 +21,6 @@ const animated = options =>
 
       static withComponent(...props) {
         return animatedWithOptions(Target.withComponent(...props))
-      }
-
-      static get extend() {
-        return extend(animated, Target.extend, options)
       }
 
       renderTarget(props) {

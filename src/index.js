@@ -1,4 +1,4 @@
-import styled from "styled-components/src/constructors/styled"
+import styled from "./construct/styled"
 import animated from "./AnimatedComponent"
 import construct from "./construct"
 import css from "./construct/css"
