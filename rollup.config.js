@@ -1,4 +1,3 @@
-import flow from "rollup-plugin-flow"
 import cjs from "rollup-plugin-commonjs"
 import babel from "rollup-plugin-babel"
 import resolve from "rollup-plugin-node-resolve"
@@ -19,7 +18,6 @@ export default {
   external: name => EXTERNALS.test(name),
   plugins: [
     resolve({ extensions: [ ".js", ".jsx" ] }),
-    flow({ pretty: true }),
     cjs({
       exclude: include
     }),
