@@ -6,9 +6,7 @@ import groupProps from "./props"
 const animated = options =>
   function animatedWithOptions(Target) {
     const { attrs } = options
-    return class extends Component {
-      static Target = Target
-
+    class AnimatedComponent extends Component {
       static displayName = `Animated(${Target.displayName})`
 
       static styledComponentId = Target.styledComponentId
@@ -23,8 +21,13 @@ const animated = options =>
         return animatedWithOptions(Target.withComponent(...props))
       }
 
-      renderTarget(props) {
-        return <Target transitionClassNames={this.constructor.classNames} {...props} />
+      renderTarget({ forwardedRef, ...props }) {
+        return (
+          <Target
+            transitionClassNames={this.constructor.classNames}
+            {...props}
+            ref={forwardedRef} />
+        )
       }
 
       renderChildren({ children, ...props }) {
@@ -54,6 +57,14 @@ const animated = options =>
         )
       }
     }
+
+    const AnimatedComponentWithRef = React.forwardRef(
+      (props, ref) => <AnimatedComponent {...props} forwardedRef={ref} />
+    )
+
+    AnimatedComponentWithRef.Target = Target
+
+    return AnimatedComponentWithRef
   }
 
 export default animated

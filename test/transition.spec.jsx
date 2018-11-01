@@ -25,7 +25,7 @@ describe("transition", () => {
     context.find(Tag).props().should.include.keys("foo", "bar", "className")
   })
 
-  it.skip("passes innerRef to child component", () => {
+  it("passes ref to child component", () => {
     const Component = transition.div``
     class Wrapper extends React.Component {
       render() {
