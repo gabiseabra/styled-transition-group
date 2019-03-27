@@ -1,22 +1,21 @@
-Styled Transition Group
-===
+# Styled Transition Group
 
 [![npm version](https://badge.fury.io/js/styled-transition-group.svg)](https://badge.fury.io/js/styled-transition-group)
 
 Inspired by issue [#1036](https://github.com/styled-components/styled-components/issues/1036) of styled-components, this package exports a `styled` object for generating animations with react-transition-group's `CSSTransition`.
 
-Getting Started
----
+## Getting Started
 
 Add `styled-transition-group` and it's peer dependencies to your package:
+`styled-transition-group@1` is compatible with `styled-components` v2 - v3.
+`styled-transition-group@2` is compatible with `styled-components` v4.
 
 ```shell
 yarn add styled-components react-transition-group
 yarn add styled-transition-group
 ```
 
-Usage
----
+## Usage
 
 The `transition` object has the same interface as styled-component's `styled` object, except it wraps the target component in a `CSSTransition` component and passes down it's props.
 
@@ -27,7 +26,7 @@ To style a transition state use an `&:{state}` selector. See [react-transition-g
 [Live example on Stackblitz](https://stackblitz.com/edit/01-styled-transition-group?file=Fade.js)
 
 ```jsx
-import transition from "styled-transition-group"
+import transition from "styled-transition-group";
 
 const Fade = transition.div`
   &:enter { opacity: 0.01; }
@@ -40,7 +39,7 @@ const Fade = transition.div`
     opacity: 0.01;
     transition: opacity 800ms ease-in;
   }
-`
+`;
 ```
 
 ### Attach transition props
@@ -50,7 +49,7 @@ Styled component's `attrs()` method can be used to attach transition props to a 
 [Live example on Stackblitz](https://stackblitz.com/edit/02-styled-transition-group?file=Fade.js)
 
 ```jsx
-import transition from "styled-transition-group"
+import transition from "styled-transition-group";
 
 const Fade = transition.div.attrs({
   unmountOnExit: true,
@@ -66,7 +65,7 @@ const Fade = transition.div.attrs({
     opacity: 0.01;
     transition: opacity 800ms ease-in;
   }
-`
+`;
 ```
 
 ### Transition Group
@@ -82,20 +81,23 @@ Using `styled-transition-group`'s css helper, selectors can target the transitio
 _Warning:_ Nesting doesn't work here. `&` targets the top level component regardless of nesting.
 
 ```jsx
-import styled from "styled-components"
-import transition, { css } from "styled-transition-group"
+import styled from "styled-components";
+import transition, { css } from "styled-transition-group";
 
-const Fade = transition.div` /* ... */ `
+const Fade = transition.div` /* ... */ `;
 
 const style = css`
-  ${Fade}:enter & { color: green }
-  ${Fade}:exit & { color: red }
-`
+  ${Fade}:enter & {
+    color: green;
+  }
+  ${Fade}:exit & {
+    color: red;
+  }
+`;
 
 const Button = styled.div`
-  ${style}
-  /* ... */
-`
+  ${style} /* ... */
+`;
 ```
 
 [Live example on Stackblitz](https://stackblitz.com/edit/04-styled-transition-group?file=Text.js)
