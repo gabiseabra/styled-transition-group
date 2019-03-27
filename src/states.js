@@ -1,5 +1,3 @@
-import mapValues from "lodash.mapvalues"
-
 const STATES = {
   appear: "appear",
   appearActive: "appear-active",
@@ -9,6 +7,9 @@ const STATES = {
   exitActive: "exit-active"
 }
 
-export const classNames = id => mapValues(STATES, type => `${id}-${type}`)
+export const classNames = id => Object.keys(STATES).reduce((result, type) => {
+  result[type] = `${id}-${STATES[type]}`
+  return result
+}, {})
 
 export default STATES
