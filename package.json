@@ -1,7 +1,7 @@
 {
   "name": "styled-transition-group",
   "description": "Write react-transition-group animations with styled-components",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0",
   "main": "dist/bundle.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "repository": "gabiseabra/styled-transition-group",
@@ -16,7 +16,6 @@
   "dependencies": {
     "lodash.invert": "^4.3.0",
     "lodash.isempty": "^4.4.0",
-    "lodash.mapvalues": "^4.6.0",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
