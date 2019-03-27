@@ -1,15 +1,11 @@
 import React, { Component } from "react"
 import CSSTransition from "react-transition-group/CSSTransition"
 import { classNames } from "../states"
-import { extend } from "../construct"
 import groupProps from "./props"
 
-const animated = options =>
-  function animatedWithOptions(Target) {
-    const { attrs } = options
-    return class extends Component {
-      static Target = Target
-
+const animated = options => function animatedWithOptions(Target) {
+  const { attrs } = options
+  class AnimatedComponent extends Component {
       static displayName = `Animated(${Target.displayName})`
 
       static styledComponentId = Target.styledComponentId
@@ -24,21 +20,21 @@ const animated = options =>
         return animatedWithOptions(Target.withComponent(...props))
       }
 
-      static get extend() {
-        return extend(animated, Target.extend, options)
-      }
-
-      renderTarget(props) {
-        return <Target transitionClassNames={this.constructor.classNames} {...props} />
+      renderTarget({ forwardedRef, ...props }) {
+        return (
+          <Target
+            transitionClassNames={this.constructor.classNames}
+            {...props}
+            ref={forwardedRef} />
+        )
       }
 
       renderChildren({ children, ...props }) {
         if(typeof children === "function") {
-          return state =>
-            this.renderTarget({
-              ...props,
-              children: children(state)
-            })
+          return state => this.renderTarget({
+            ...props,
+            children: children(state)
+          })
         }
         return this.renderTarget({ children, ...props })
       }
@@ -58,8 +54,16 @@ const animated = options =>
           </CSSTransition>
         )
       }
-    }
   }
+
+  const AnimatedComponentWithRef = React.forwardRef(
+    (props, ref) => <AnimatedComponent {...props} forwardedRef={ref} />
+  )
+
+  AnimatedComponentWithRef.Target = Target
+
+  return AnimatedComponentWithRef
+}
 
 export default animated
 

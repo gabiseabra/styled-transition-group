@@ -24,11 +24,11 @@ describe("transition", () => {
     context.find(Tag).props().should.include.keys("foo", "bar", "className")
   })
 
-  it("passes innerRef to child component", () => {
+  it("passes ref to child component", () => {
     const Component = transition.div``
     class Wrapper extends React.Component {
       render() {
-        return <Component timeout={100} innerRef={(node) => { this.innerRef = node }} />
+        return <Component timeout={100} ref={(node) => { this.innerRef = node }} />
       }
     }
     const context = mount(<Wrapper />)
@@ -51,15 +51,6 @@ describe("transition", () => {
     const context = mount(<Component in />)
     context.find(CSSTransition).props().should.include.keys("timeout", "classNames", "unmountOnExit")
     context.find("div").props().should.not.include.keys("unmountOnExit")
-  })
-
-  it("can be extended", () => {
-    const Component = transition.div`foo`
-    const Wrapper = Component.extend`bar`
-    const context = mount(<Wrapper timeout={100} />)
-    context.find(CSSTransition).should.have.length(1)
-    context.find("div").should.have.length(1)
-    Wrapper.Target.componentStyle.rules.should.include("foo", "bar")
   })
 
   it("omits transition attrs", () => {
