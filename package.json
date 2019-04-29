@@ -1,10 +1,10 @@
 {
-  "name": "styled-transition-group",
+  "name": "@lesechos/styled-transition-group",
   "description": "Write react-transition-group animations with styled-components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "dist/bundle.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
-  "repository": "gabiseabra/styled-transition-group",
+  "repository": "LesEchos/styled-transition-group",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "yarn run clean && yarn run build",
