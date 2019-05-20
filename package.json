@@ -3,6 +3,7 @@
   "description": "Write react-transition-group animations with styled-components",
   "version": "2.0.0",
   "main": "dist/bundle.js",
+  "module": "dist/bundle.es.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "repository": "gabiseabra/styled-transition-group",
   "license": "MIT",
