@@ -5,7 +5,7 @@ import STATES from "../states"
 
 const STATES_BY_NAME = invert(STATES)
 
-const PATTERN = new RegExp(`([^\\s;}]+|^):(${Object.values(STATES).join("|")})(?=[\\s\\+~,{])`, "g")
+const PATTERN = new RegExp(`([^\\s;}]+|^):(${Object.keys(STATES).map(key => STATES[key]).join("|")})(?=[\\s\\+~,{])`, "g")
 
 const getClassName = state => props => `&.${props.transitionClassNames[state]}`
 
